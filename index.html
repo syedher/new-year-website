@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>For Rouf — Our New Year</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Poppins',sans-serif;
+  background:radial-gradient(circle at top,#1b2a41,#0f2027);
+  color:#fff;overflow-x:hidden;
+  overflow-y: auto;
+}
+.page{
+  min-height:100vh;display:none;
+  align-items:center;justify-content:center;
+  padding:60px 20px;text-align:center; overflow-y: auto;
+}
+.page.active{display:flex}
+.container{max-width:900px}
+h1,h2{font-family:'Playfair Display',serif;margin-bottom:22px}
+h1{font-size:3.2rem}
+h2{font-size:2.2rem}
+p{font-size:1.15rem;line-height:1.9;opacity:.95}
+.btn{
+  margin-top:25px;padding:14px 34px;border:none;
+  border-radius:40px;
+  background:linear-gradient(135deg,#ff5f7e,#ff9966);
+  color:#fff;font-size:1rem;cursor:pointer;
+  box-shadow:0 15px 35px rgba(0,0,0,.45);
+  transition:.3s
+}
+.btn:hover{transform:translateY(-3px) scale(1.04)}
+.nav{display:flex;justify-content:space-between;gap:20px;margin-top:35px}
+.choice{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.choice button{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3)}
+.reveal{opacity:0;transform:translateY(20px);transition:.6s;margin-top:25px}
+.reveal.show{opacity:1;transform:none}
+
+.heart{position:absolute;width:14px;height:14px;background:#ff5f7e;transform:rotate(45deg);opacity:.6;animation:float 12s infinite}
+.heart:before,.heart:after{content:'';position:absolute;width:14px;height:14px;background:#ff5f7e;border-radius:50%}
+.heart:before{top:-7px}
+.heart:after{left:-7px}
+@keyframes float{0%{transform:translateY(110vh) rotate(45deg)}100%{transform:translateY(-10vh) rotate(45deg)}}
+
+.music{position:fixed;top:20px;right:20px;font-size:1.4rem;cursor:pointer;z-index:10}
+footer{position:fixed;bottom:15px;width:100%;text-align:center;font-size:.9rem;opacity:.7}
+</style>
+</head>
+<body>
+
+<div class="music" onclick="toggleMusic()">🎵</div>
+<audio id="bgm" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9c9b5bda8f.mp3" type="audio/mpeg">
+</audio>
+
+<div class="heart" style="left:10%"></div>
+<div class="heart" style="left:30%;animation-delay:2s"></div>
+<div class="heart" style="left:55%;animation-delay:4s"></div>
+<div class="heart" style="left:75%;animation-delay:1s"></div>
+
+<section class="page active"><div class="container">
+<h1>Hey Rouf ❤️</h1>
+<p>This isn’t something to read quickly.
+It’s something to <em>feel</em>.</p>
+<div class="nav">
+<span></span>
+<button class="btn" onclick="nextPage()">Begin →</button>
+</div>
+</div></section>
+
+<section class="page"><div class="container">
+<h2>We Began Somewhere Small</h2>
+<p>March 2022. 10th class. Somewhere ordinary.
+But that’s where you quietly entered my story.</p>
+<div class="nav">
+<button class="btn" onclick="prevPage()">← Back</button>
+<button class="btn" onclick="nextPage()">Next →</button>
+</div>
+</div></section>
+
+<section class="page"><div class="container">
+<h2>Your Anger</h2>
+<p>I won’t lie to you.</p>
+<div class="choice">
+<button class="btn" onclick="revealNext(this)">It scares me sometimes</button>
+<button class="btn" onclick="revealNext(this)">But it also shows how deeply you feel</button>
+</div>
+<p class="reveal">I’m learning how to love the fire without burning myself.
+I just need you to meet me halfway.</p>
+<div class="nav">
+<button class="btn" onclick="prevPage()">← Back</button>
+<button class="btn" onclick="nextPage()">Next →</button>
+</div>
+</div></section>
+
+<section class="page"><div class="container">
+<h2>When I Need You</h2>
+<p>There are moments I look for you… and you’re not there.</p>
+<button class="btn" onclick="revealNext(this)">Click if you’re listening</button>
+<p class="reveal">I don’t need perfection.
+I just need presence.</p>
+<div class="nav">
+<button class="btn" onclick="prevPage()">← Back</button>
+<button class="btn" onclick="nextPage()">Next →</button>
+</div>
+</div></section>
+
+<section class="page"><div class="container">
+<h2>A Truth I Carry</h2>
+<button class="btn" onclick="revealNext(this)">Tap to reveal</button>
+<p class="reveal">You’re a part of my future.
+Not a hope. A decision.</p>
+<div class="nav">
+<button class="btn" onclick="prevPage()">← Back</button>
+<button class="btn" onclick="nextPage()">Next →</button>
+</div>
+</div></section>
+
+<section class="page"><div class="container">
+<h2>Choose This With Me</h2>
+<p>If we’re going to grow…</p>
+<div class="choice">
+<button class="btn">With patience</button>
+<button class="btn">With honesty</button>
+<button class="btn">With effort</button>
+</div>
+<div class="nav">
+<button class="btn" onclick="prevPage()">← Back</button>
+<button class="btn" onclick="nextPage()">Next →</button>
+</div>
+</div></section>
+
+<section class="page"><div class="container">
+<h2>If You Ever Forget</h2>
+<button class="btn" onclick="revealNext(this)">Press and hold</button>
+<p class="reveal">Someone chose you even when it was hard.</p>
+<div class="nav">
+<button class="btn" onclick="prevPage()">← Back</button>
+<button class="btn" onclick="nextPage()">Next →</button>
+</div>
+</div></section>
+
+<section class="page"><div class="container">
+<h2>Our Year, In Moments</h2>
+<p>Not everything fits into words. Some things live in memories.</p>
+<button class="btn" onclick="showMemories()">Show our year →</button>
+<div id="memoryGallery" style="display:none;margin-top:30px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:18px">
+    <img src="photo1.jpg" alt="Memory" style="width:100%;border-radius:16px"> <p>Remember this? How we played and how good it was</p>
+    <img src="photo2.jpg" alt="Memory" style="width:100%;border-radius:16px"> <p>The urs thing, it was a really good date... we had our first rides there...</p>
+    <img src="photo3.jpg" alt="Memory" style="width:100%;border-radius:16px"> <p>The OG August 9... We agreed on not meeting again... haha guess that'll not happen.</p>
+    <img src="photo4.jpg" alt="Memory" style="width:100%;border-radius:16px"><p>We took many many photos that day, didn't we?</p>
+    <img src="photo5.jpg" alt="Memory" style="width:100%;border-radius:16px"><p>A photo for our children...</p>
+    <img src="photo6.jpg" alt="Memory" style="width:100%;border-radius:16px"><p>Tandoooori Biryani, I want that again...</p>
+  </div>
+  <p style="margin-top:20px;font-style:italic">Every photo here is proof — we lived this year together.</p>
+</div>
+<div class="nav">
+<button class="btn" onclick="prevPage()">← Back</button>
+<button class="btn" onclick="nextPage()">Next →</button>
+</div>
+</div></section>
+
+<section class="page"><div class="container">
+<h1>Happy New Year, Rouf 🎆</h1>
+<p>If you’re still here…
+then maybe we’re stronger than we think.</p>
+<p style="margin-top:25px;font-style:italic">— Always yours ❤️</p>
+<div class="nav">
+<button class="btn" onclick="prevPage()">← Back</button>
+</div>
+</div></section>
+
+<footer>Made only for Rouf</footer>
+
+<script>
+let currentIndex = 0;
+const pages = document.querySelectorAll('.page');
+
+function showPage(index){
+  pages[currentIndex].classList.remove('active');
+  currentIndex = index;
+  pages[currentIndex].classList.add('active');
+}
+
+function nextPage(){
+  if(currentIndex < pages.length - 1){ showPage(currentIndex + 1); }
+}
+
+function prevPage(){
+  if(currentIndex > 0){ showPage(currentIndex - 1); }
+}
+
+function revealNext(btn){
+  const revealEl = btn.parentElement.querySelector('.reveal') || btn.nextElementSibling;
+  if(revealEl){ revealEl.classList.add('show'); }
+}
+
+const music = document.getElementById('bgm');
+function toggleMusic(){ if(music){ music.paused ? music.play() : music.pause(); } }
+function showMemories(){ const g=document.getElementById('memoryGallery'); if(g) g.style.display='block'; }
+</script>
+
+</body>
+</html>
